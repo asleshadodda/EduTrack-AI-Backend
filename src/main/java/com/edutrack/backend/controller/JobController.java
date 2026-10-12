@@ -32,9 +32,16 @@ public class JobController {
     }
 
     @PostMapping
-    public Job create(@RequestBody Job job) {
-        if (job.getCompany() != null && job.getCompany().getId() != null) {
-            Company company = companies.findById(job.getCompany().getId())
+    public Job create(
+            @RequestParam(required = false) Long companyId,
+            @RequestBody Job job) {
+        Long requestedCompanyId = companyId;
+        if (requestedCompanyId == null && job.getCompany() != null) {
+            requestedCompanyId = job.getCompany().getId();
+        }
+
+        if (requestedCompanyId != null) {
+            Company company = companies.findById(requestedCompanyId)
                 .orElseThrow(() -> new RuntimeException("Company not found"));
             job.setCompany(company);
         }

@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Local database credentials
+/src/main/resources/application.properties
+
+# Nested duplicate project and build output
+/bin/
