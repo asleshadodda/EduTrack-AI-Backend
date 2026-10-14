@@ -17,5 +17,3 @@ services:
         sync: false
       - key: SPRING_DATASOURCE_PASSWORD
         sync: false
-      - key: ALLOWED_ORIGIN
-        value: https://edu-track-ai-frontend.vercel.app
